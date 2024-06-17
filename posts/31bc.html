@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"what14new.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[&#39;$&#39;,&#39;$&#39;]]             }         });">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离散数学（一）">
+<meta property="og:url" content="http://what14new.github.io/posts/31bc.html">
+<meta property="og:site_name" content="小花生">
+<meta property="og:description" content="MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[&#39;$&#39;,&#39;$&#39;]]             }         });">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-24T06:00:00.000Z">
+<meta property="article:modified_time" content="2024-05-25T12:40:26.410Z">
+<meta property="article:author" content="花生了什么树">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://what14new.github.io/posts/31bc.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>离散数学（一） | 小花生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小花生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">study & life record.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>计划</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://what14new.github.io/posts/31bc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="花生了什么树">
+      <meta itemprop="description" content="星海横流，岁月成碑。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小花生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          离散数学（一）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-05-24 14:00:00" itemprop="dateCreated datePublished" datetime="2024-05-24T14:00:00+08:00">2024-05-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">离散数学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+
+<blockquote>
+<p>离散数学做题与整理（个人向）。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="集合与关系"><a href="#集合与关系" class="headerlink" title="集合与关系"></a>集合与关系</h2><h3 id="集合相等"><a href="#集合相等" class="headerlink" title="集合相等"></a>集合相等</h3><p>证明两个集合相等时，考虑从两边互证包含关系。</p>
+<h3 id="基数运算"><a href="#基数运算" class="headerlink" title="基数运算"></a>基数运算</h3><ul>
+<li><strong>Simple Example：</strong><br>集合 $A$ 到集合 $B$ 的关系有几个（设基数分别为$a,\ b$）。<br><strong>解：</strong>集合 $A$ 到集合 $B$ 的普遍关系有 $ab$ 个元素。<br>而集合 $A$ 到集合 $B$ 的每个关系都是这个普遍关系的子集。<br>所以关系一共有 $2^{ab}$ 个。</li>
+</ul>
+<h3 id="闭包运算"><a href="#闭包运算" class="headerlink" title="闭包运算"></a>闭包运算</h3><p>自反(reflexive)闭包 $r(\rho)&#x3D;\rho \bigcup I_A$<br>    对称(symmetric)闭包 $s(\rho)&#x3D;\rho \bigcup \widetilde \rho$<br>    传递(transitive)闭包 $t(\rho)&#x3D;\bigcup\limits_{i&#x3D;1}^{\infty} \rho^i$</p>
+<p>$A$ 上包含 $\rho$ 的最小等价关系是 $rts(\rho)$<br>（实际上是找到一个最小的自反、对称、传递的闭包，注意要先求 $s$ 再求 $t$）</p>
+<h3 id="等价关系，等价类"><a href="#等价关系，等价类" class="headerlink" title="等价关系，等价类"></a>等价关系，等价类</h3><p>等价关系 &#x3D; 自反+对称+可传递 的关系<br>$[\ a\ ]_\rho$ 表示$a$生成的等价类</p>
+<h3 id="偏序关系"><a href="#偏序关系" class="headerlink" title="偏序关系"></a>偏序关系</h3><p>偏序关系 &#x3D; 自反+反对称+可传递 的关系<br>全序：任意两元素都<strong>可比</strong>的偏序关系<br>良序：任意非空子集都<strong>存在最小元素</strong>的偏序关系</p>
+<blockquote>
+<p>注意辨析：一个良序一定是全序，一个<strong>有限的</strong>全序一定是良序。</p>
+</blockquote>
+<p><strong>Hasse图（次序图）：</strong> 上大下小，有边连接表示 “$\leq$”（注意是广义的 “$\leq$” ）</p>
+<blockquote>
+<p>全序的次序图仅由一条竖直边上结点的序列组成（任意两元素可比）</p>
+</blockquote>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li>内射：不同元素像不同<br>满射：值域 &#x3D; 值域包</li>
+</ul>
+<h3 id="函数的复合"><a href="#函数的复合" class="headerlink" title="函数的复合"></a>函数的复合</h3><p>$f:A\to B,\ g:B\to C$<br>复合：$(g\cdot f)(a)&#x3D;g(f(a))$，注意与 关系的复合 形式不同</p>
+<ul>
+<li>如果 $f,g$ 都是<strong>内射</strong>，那么 $gf$ 是<strong>内射</strong><br>如果 $f,g$ 都是<strong>满射</strong>，那么 $gf$ 是<strong>满射</strong><br>如果 $f,g$ 都是<strong>双射</strong>，那么 $gf$ 是<strong>双射</strong></li>
+<li>如果 $gf$ 是<strong>内射</strong>，那么 $f$ 是<strong>内射</strong><br>如果 $gf$ 是<strong>满射</strong>，那么 $g$ 是<strong>满射</strong><br>如果 $gf$ 是<strong>双射</strong>，那么 $f$ 是<strong>内射</strong>，$g$​ 是<strong>满射</strong></li>
+</ul>
+<h3 id="逆函数"><a href="#逆函数" class="headerlink" title="逆函数"></a>逆函数</h3><p>存在逆函数，一定要求是双射。</p>
+<p>如果函数 $f:A\to B$ 是可逆的，则有<br>$$<br>\begin{aligned}<br>f^{-1}f&#x3D;I_A\\<br>ff^{-1}&#x3D;I_B<br>\end{aligned}<br>$$<br>对复合函数的逆：<br>$$<br>(gf)^{-1}&#x3D;f^{-1}\cdot g^{-1}<br>$$</p>
+<h3 id="集合的基数"><a href="#集合的基数" class="headerlink" title="集合的基数"></a>集合的基数</h3><p>$A,B$ 等势&#x2F;有相同的基数：存在一个双射函数 $f:A\to B$，记作 $A\sim B$​</p>
+<ul>
+<li>有理数集 $\mathbb Q$ 是可数集，基数记为$\aleph_0$</li>
+<li>实数集 $\mathbb R$ 是不可数集，基数记为$\aleph_1$</li>
+</ul>
+<h4 id="证明集合可数"><a href="#证明集合可数" class="headerlink" title="证明集合可数"></a>证明集合可数</h4><ul>
+<li><p>可排成无穷序列的形式</p>
+</li>
+<li><p>可数个可数集的并集是可数集</p>
+</li>
+</ul>
+<h2 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h2><h3 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h3><p>设 $G&#x3D;(V,E)$ 是连通图，<br>$K(G)$ 点连通度：最小点割集的基数<br>$\sigma(G)$ 边连通度：最小边割集的基数</p>
+<p>始终成立：$K(G)\leq\lambda(G)\leq\sigma(G)$</p>
+<blockquote>
+<p>以下n表示结点数，m表示边数</p>
+</blockquote>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><ul>
+<li><p>$m&#x3D;n-1$</p>
+</li>
+<li><p>$m &#x3D; \sum kn_k$ ，$n &#x3D; \sum n_k$ （其中 $n_k$ 表示出度为$k$的结点个数）</p>
+</li>
+<li><p><strong>Simple Example：</strong><br>一颗正则3元树，有16个结点，求他的叶结点数。<br><strong>解：</strong> $m&#x3D;3n_3\ \ \ n &#x3D; n_0 + n_3\ \ \ m&#x3D;n-1$<br>直接解得 $n_0&#x3D;11$</p>
+</li>
+</ul>
+<h3 id="判断同构"><a href="#判断同构" class="headerlink" title="判断同构"></a>判断同构</h3><p>不同构的验证：结点数，边数不同，各结点度数无法对应等；</p>
+<p>同构的验证：找出符合同构条件的双射。</p>
+<h3 id="欧拉图"><a href="#欧拉图" class="headerlink" title="欧拉图"></a>欧拉图</h3><ul>
+<li>$\Leftrightarrow$ 每一结点度数为偶数</li>
+</ul>
+<h3 id="哈密顿图"><a href="#哈密顿图" class="headerlink" title="哈密顿图"></a>哈密顿图</h3><ul>
+<li><p>$\Leftrightarrow$ 闭包为哈密顿图</p>
+</li>
+<li><p>$\Leftarrow$​ 闭包为完全图</p>
+<blockquote>
+<p>构造闭包：循环找出不相邻的 $u, v$ 两点，满足 $deg(u) + deg(v)\geq n$ ，连接</p>
+</blockquote>
+</li>
+<li><p>$\Rightarrow$ 删去 $n$ 个点后，分图数 $\leq n$ </p>
+</li>
+<li><p>$\Leftarrow$ 结点度数均 $\geq n &#x2F; 2$</p>
+</li>
+<li><p>$\Leftarrow$ 任意两不相邻结点度数和 $\geq n$</p>
+</li>
+</ul>
+<h3 id="二部图"><a href="#二部图" class="headerlink" title="二部图"></a>二部图</h3><ul>
+<li>$\Leftrightarrow$ 所有回路偶数长</li>
+</ul>
+<h4 id="匹配："><a href="#匹配：" class="headerlink" title="匹配："></a>匹配：</h4><ul>
+<li>$\Leftrightarrow$ 满足<strong>相异性条件</strong>：$V_1$ 中每 $k$ 个结点至少与$V_2$ 中 $k$ 个结点邻接。</li>
+<li>$\Leftarrow$ 满足 <strong>t-条件</strong>：存在 $t &gt; 0$<ol>
+<li>$V_1$ 中每个结点，都至少有 $t$ 条边与其关联</li>
+<li>$V_2$ 中每个结点，都至多有 $t$ 条边与其关联</li>
+</ol>
+</li>
+</ul>
+<h3 id="平面图"><a href="#平面图" class="headerlink" title="平面图"></a>平面图</h3><ul>
+<li><p>欧拉公式：$n-m+k&#x3D;2$（记得 $k$ 包含无限面）</p>
+</li>
+<li><p>$\Rightarrow$ $m \leq 3n-6$（$m\geq2$ 时）​</p>
+<blockquote>
+<p>证明过程：记所有面的边数的和为$\Sigma$<br>则 $2m &#x3D; \Sigma\geq 3k$，又由欧拉公式 $n+k-m&#x3D;2$<br>解得 $m\leq 3n-6$​，同时也可以得到 $k\leq 2n-4$</p>
+</blockquote>
+</li>
+<li><p>$\Leftrightarrow$ $Kuratowski$ 定理：不包含在度为2的节点内与$K_5\ or\ K_{3,3}$同构的子图。</p>
+</li>
+</ul>
+<h2 id="解题常用套路"><a href="#解题常用套路" class="headerlink" title="解题常用套路"></a>解题常用套路</h2><h3 id="数学归纳法"><a href="#数学归纳法" class="headerlink" title="数学归纳法"></a>数学归纳法</h3><p>跟自然数 n 有关的问题。</p>
+<p>构建初始条件和递推关系证明。</p>
+<h3 id="反证法"><a href="#反证法" class="headerlink" title="反证法"></a>反证法</h3><p>正难则反（?）</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/1b1d.html" rel="prev" title="初识 PyTorch">
+      <i class="fa fa-chevron-left"></i> 初识 PyTorch
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/1391.html" rel="next" title="树状数组">
+      树状数组 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E4%B8%8E%E5%85%B3%E7%B3%BB"><span class="nav-number">1.</span> <span class="nav-text">集合与关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9B%B8%E7%AD%89"><span class="nav-number">1.1.</span> <span class="nav-text">集合相等</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%95%B0%E8%BF%90%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">基数运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AD%E5%8C%85%E8%BF%90%E7%AE%97"><span class="nav-number">1.3.</span> <span class="nav-text">闭包运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E4%BB%B7%E5%85%B3%E7%B3%BB%EF%BC%8C%E7%AD%89%E4%BB%B7%E7%B1%BB"><span class="nav-number">1.4.</span> <span class="nav-text">等价关系，等价类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%8F%E5%BA%8F%E5%85%B3%E7%B3%BB"><span class="nav-number">1.5.</span> <span class="nav-text">偏序关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E5%A4%8D%E5%90%88"><span class="nav-number">2.1.</span> <span class="nav-text">函数的复合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%86%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">逆函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%9A%84%E5%9F%BA%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">集合的基数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%81%E6%98%8E%E9%9B%86%E5%90%88%E5%8F%AF%E6%95%B0"><span class="nav-number">2.3.1.</span> <span class="nav-text">证明集合可数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E8%AE%BA"><span class="nav-number">3.</span> <span class="nav-text">图论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="nav-number">3.1.</span> <span class="nav-text">图的连通性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">3.2.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%90%8C%E6%9E%84"><span class="nav-number">3.3.</span> <span class="nav-text">判断同构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%9B%BE"><span class="nav-number">3.4.</span> <span class="nav-text">欧拉图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%88%E5%AF%86%E9%A1%BF%E5%9B%BE"><span class="nav-number">3.5.</span> <span class="nav-text">哈密顿图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E9%83%A8%E5%9B%BE"><span class="nav-number">3.6.</span> <span class="nav-text">二部图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%B9%E9%85%8D%EF%BC%9A"><span class="nav-number">3.6.1.</span> <span class="nav-text">匹配：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E9%9D%A2%E5%9B%BE"><span class="nav-number">3.7.</span> <span class="nav-text">平面图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E5%B8%B8%E7%94%A8%E5%A5%97%E8%B7%AF"><span class="nav-number">4.</span> <span class="nav-text">解题常用套路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">数学归纳法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E8%AF%81%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">反证法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="花生了什么树"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">花生了什么树</p>
+  <div class="site-description" itemprop="description">星海横流，岁月成碑。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花生了什么树</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+--!>
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/16/2024 20:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()",250);
+</script>
+
+<!-- 访客量的设置 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span><br></span> 
+
+<span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+</span>
+<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人</span>
+    <span class="post-meta-divider">|</span>
+<span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+</span>
+    <span>总访问量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

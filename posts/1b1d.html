@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"what14new.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="初步了解PyTorch基本操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识 PyTorch">
+<meta property="og:url" content="http://what14new.github.io/posts/1b1d.html">
+<meta property="og:site_name" content="小花生">
+<meta property="og:description" content="初步了解PyTorch基本操作。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://what14new.github.io/posts/1b1d/1.png">
+<meta property="article:published_time" content="2024-05-23T08:21:34.000Z">
+<meta property="article:modified_time" content="2024-05-24T00:21:38.433Z">
+<meta property="article:author" content="花生了什么树">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://what14new.github.io/posts/1b1d/1.png">
+
+<link rel="canonical" href="http://what14new.github.io/posts/1b1d.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>初识 PyTorch | 小花生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小花生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">study & life record.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>计划</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://what14new.github.io/posts/1b1d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="花生了什么树">
+      <meta itemprop="description" content="星海横流，岁月成碑。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小花生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初识 PyTorch
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-05-23 16:21:34" itemprop="dateCreated datePublished" datetime="2024-05-23T16:21:34+08:00">2024-05-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">深度学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>初步了解PyTorch基本操作。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="环境管理（Conda）"><a href="#环境管理（Conda）" class="headerlink" title="环境管理（Conda）"></a>环境管理（Conda）</h2><p><strong>使用conda (24.5.0) 管理python环境</strong></p>
+<p>创建环境：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name d2l python=<span class="number">3.11</span> -y</span><br></pre></td></tr></table></figure>
+
+<p>激活环境：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate d2l</span><br></pre></td></tr></table></figure>
+
+<p>列出环境：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda env list</span><br></pre></td></tr></table></figure>
+
+<p>安装包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install package_name</span><br></pre></td></tr></table></figure>
+
+<p>查看当前环境安装了哪些包：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">list</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="运行环境（Jupyter-Spyder）"><a href="#运行环境（Jupyter-Spyder）" class="headerlink" title="运行环境（Jupyter &amp; Spyder）"></a>运行环境（Jupyter &amp; Spyder）</h2><p><strong>Jupyter</strong>：</p>
+<p>定位路径（mine: <code>cd d2l-zh</code>）后，用以下命令打开Jupyter笔记本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook</span><br></pre></td></tr></table></figure>
+
+<p><strong>Spyder</strong>：</p>
+<p>在对应环境 <code>conda install spyder</code> ，以后可直接进入。</p>
+<h2 id="初识"><a href="#初识" class="headerlink" title="初识"></a>初识</h2><h3 id="矩阵处理"><a href="#矩阵处理" class="headerlink" title="矩阵处理"></a>矩阵处理</h3><p>初始化矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">A = torch.arange(<span class="number">20</span>).reshape(<span class="number">5</span>, <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(A)</span><br><span class="line"><span class="string">&quot;&quot;&quot;矩阵A&quot;&quot;&quot;</span></span><br><span class="line">tensor([[ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">[ <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>],</span><br><span class="line">[ <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>],</span><br><span class="line">[<span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>],</span><br><span class="line">[<span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">19</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>转置矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(A.T)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;矩阵A转置&quot;&quot;&quot;</span></span><br><span class="line">tensor([[ <span class="number">0</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">16</span>],</span><br><span class="line">[ <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">13</span>, <span class="number">17</span>],</span><br><span class="line">[ <span class="number">2</span>, <span class="number">6</span>, <span class="number">10</span>, <span class="number">14</span>, <span class="number">18</span>],</span><br><span class="line">[ <span class="number">3</span>, <span class="number">7</span>, <span class="number">11</span>, <span class="number">15</span>, <span class="number">19</span>]])</span><br></pre></td></tr></table></figure>
+
+<p>点乘：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = torch.arange(<span class="number">4.0</span>)                      <span class="comment"># tensor([0., 1., 2., 3.])</span></span><br><span class="line">y = torch.ones(<span class="number">4</span>, dtype = torch.float32) <span class="comment"># tensor([1., 1., 1., 1.])</span></span><br><span class="line"><span class="built_in">print</span>(torch.dot(x, y))</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;输出点乘结果&quot;&quot;&quot;</span></span><br><span class="line">tensor(<span class="number">6.</span>)</span><br></pre></td></tr></table></figure>
+
+<p>叉乘：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">A = torch.arange(<span class="number">20.</span>).reshape(<span class="number">5</span>, <span class="number">4</span>)</span><br><span class="line">B = torch.ones(<span class="number">4</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(torch.mm(A, B))</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;输出叉乘结果&quot;&quot;&quot;</span></span><br><span class="line">tensor([[ <span class="number">6.</span>,  <span class="number">6.</span>,  <span class="number">6.</span>],</span><br><span class="line">        [<span class="number">22.</span>, <span class="number">22.</span>, <span class="number">22.</span>],</span><br><span class="line">        [<span class="number">38.</span>, <span class="number">38.</span>, <span class="number">38.</span>],</span><br><span class="line">        [<span class="number">54.</span>, <span class="number">54.</span>, <span class="number">54.</span>],</span><br><span class="line">        [<span class="number">70.</span>, <span class="number">70.</span>, <span class="number">70.</span>]])</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="trytry-自动求导"><a href="#trytry-自动求导" class="headerlink" title="trytry 自动求导"></a>trytry 自动求导</h3><blockquote>
+<p>好理解：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39208832/article/details/117415229">grad can be implicitly created only for scalar outputs-CSDN博客</a></p>
+</blockquote>
+<p>计算 <code>y = x * x * x</code>  对 <code>x</code> 的导数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">x = torch.arange(<span class="number">5.0</span>, requires_grad = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">y = x * x * x</span><br><span class="line">y.<span class="built_in">sum</span>().backward()</span><br><span class="line"><span class="built_in">print</span>(x.grad)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;求导结果&quot;&quot;&quot;</span></span><br><span class="line">tensor([ <span class="number">0.</span>,  <span class="number">3.</span>, <span class="number">12.</span>, <span class="number">27.</span>, <span class="number">48.</span>])</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>backward()</code> ，反向传播（backpropagate），意味着跟踪整个计算图，填充关于每个参数的偏导数。</p>
+<h3 id="trytry-绘制切线"><a href="#trytry-绘制切线" class="headerlink" title="trytry 绘制切线"></a>trytry 绘制切线</h3><p>任务：给定函数<code>f(x)</code> ，画出在 <code>x = 1</code> 处的近似切线。（<code>f(x)</code> 任意指定）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib_inline <span class="keyword">import</span> backend_inline</span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span> * x ** <span class="number">2</span> - <span class="number">4</span> * x</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">numerical_lim</span>(<span class="params">f, x, delta</span>):</span><br><span class="line">    <span class="keyword">return</span> (f(x + delta) - f(x)) / delta</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">use_svg_display</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;使用svg格式在Jupyter中显示绘图&quot;&quot;&quot;</span></span><br><span class="line">    backend_inline.set_matplotlib_formats(<span class="string">&#x27;svg&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">set_figsize</span>(<span class="params">figsize=(<span class="params"><span class="number">3.5</span>, <span class="number">2.5</span></span>)</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;设置matplotlib的图表大小&quot;&quot;&quot;</span></span><br><span class="line">    use_svg_display()</span><br><span class="line">    d2l.plt.rcParams[<span class="string">&#x27;figure.figsize&#x27;</span>] = figsize</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">set_axes</span>(<span class="params">axes, xlabel, ylabel, xlim, ylim, xscale, yscale, legend</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;设置matplotlib的轴&quot;&quot;&quot;</span></span><br><span class="line">    axes.set_xlabel(xlabel)</span><br><span class="line">    axes.set_ylabel(ylabel)</span><br><span class="line">    axes.set_xscale(xscale)</span><br><span class="line">    axes.set_yscale(yscale)</span><br><span class="line">    axes.set_xlim(xlim)</span><br><span class="line">    axes.set_ylim(ylim)</span><br><span class="line">    <span class="keyword">if</span> legend:</span><br><span class="line">        axes.legend(legend)</span><br><span class="line">    axes.grid()</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">plot</span>(<span class="params">X, Y=<span class="literal">None</span>, xlabel=<span class="literal">None</span>, ylabel=<span class="literal">None</span>, legend=<span class="literal">None</span>, xlim=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">ylim=<span class="literal">None</span>, xscale=<span class="string">&#x27;linear&#x27;</span>, yscale=<span class="string">&#x27;linear&#x27;</span>,</span></span><br><span class="line"><span class="params">fmts=(<span class="params"><span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;m--&#x27;</span>, <span class="string">&#x27;g-.&#x27;</span>, <span class="string">&#x27;r:&#x27;</span></span>), figsize=(<span class="params"><span class="number">3.5</span>, <span class="number">2.5</span></span>), axes=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;绘制数据点&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> legend <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        legend = []</span><br><span class="line">    set_figsize(figsize)</span><br><span class="line">    axes = axes <span class="keyword">if</span> axes <span class="keyword">else</span> d2l.plt.gca()</span><br><span class="line">    <span class="comment"># 如果X有一个轴，输出True</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">has_one_axis</span>(<span class="params">X</span>):</span><br><span class="line">        <span class="keyword">return</span> (<span class="built_in">hasattr</span>(X, <span class="string">&quot;ndim&quot;</span>) <span class="keyword">and</span> X.ndim == <span class="number">1</span> <span class="keyword">or</span> <span class="built_in">isinstance</span>(X, <span class="built_in">list</span>)</span><br><span class="line">                <span class="keyword">and</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(X[<span class="number">0</span>], <span class="string">&quot;__len__&quot;</span>))</span><br><span class="line">    <span class="keyword">if</span> has_one_axis(X):</span><br><span class="line">        X = [X]</span><br><span class="line">    <span class="keyword">if</span> Y <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        X, Y = [[]] * <span class="built_in">len</span>(X), X</span><br><span class="line">    <span class="keyword">elif</span> has_one_axis(Y):</span><br><span class="line">        Y = [Y]</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(X) != <span class="built_in">len</span>(Y):</span><br><span class="line">        X = X * <span class="built_in">len</span>(Y)</span><br><span class="line">    axes.cla()</span><br><span class="line">    <span class="keyword">for</span> x, y, fmt <span class="keyword">in</span> <span class="built_in">zip</span>(X, Y, fmts):</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(x):</span><br><span class="line">            axes.plot(x, y, fmt)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            axes.plot(y, fmt)</span><br><span class="line">    set_axes(axes, xlabel, ylabel, xlim, ylim, xscale, yscale, legend)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>: </span><br><span class="line">    delta = <span class="number">1e-5</span></span><br><span class="line">    tangent = numerical_lim(f, <span class="number">1</span>, delta)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;delta=<span class="subst">&#123;delta:<span class="number">.5</span>f&#125;</span>, numerical limit=<span class="subst">&#123;tangent:<span class="number">.5</span>f&#125;</span>&#x27;</span>)    </span><br><span class="line">        </span><br><span class="line">    x = np.arange(<span class="number">0.01</span>, <span class="number">3</span>, <span class="number">0.005</span>)</span><br><span class="line">    plot(x, [f(x), tangent * x + f(<span class="number">1</span>) - tangent * <span class="number">1</span>], <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;f(x)&#x27;</span>, legend=[<span class="string">&#x27;f(x)&#x27;</span>, <span class="string">&#x27;Tangent line (x=1)&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果：</strong></p>
+<img src="/posts/1b1d/1.png" class="">
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/b06c.html" rel="prev" title="《蒲和平》5-3 第一型曲线与曲面积分">
+      <i class="fa fa-chevron-left"></i> 《蒲和平》5-3 第一型曲线与曲面积分
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/31bc.html" rel="next" title="离散数学（一）">
+      离散数学（一） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86%EF%BC%88Conda%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">环境管理（Conda）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%EF%BC%88Jupyter-Spyder%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">运行环境（Jupyter &amp; Spyder）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E8%AF%86"><span class="nav-number">3.</span> <span class="nav-text">初识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%A4%84%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">矩阵处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trytry-%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC"><span class="nav-number">3.2.</span> <span class="nav-text">trytry 自动求导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trytry-%E7%BB%98%E5%88%B6%E5%88%87%E7%BA%BF"><span class="nav-number">3.3.</span> <span class="nav-text">trytry 绘制切线</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="花生了什么树"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">花生了什么树</p>
+  <div class="site-description" itemprop="description">星海横流，岁月成碑。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花生了什么树</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+--!>
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/16/2024 20:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()",250);
+</script>
+
+<!-- 访客量的设置 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span><br></span> 
+
+<span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+</span>
+<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人</span>
+    <span class="post-meta-divider">|</span>
+<span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+</span>
+    <span>总访问量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>

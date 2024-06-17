@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"what14new.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="课本气体动理论关键知识点。                     MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[&#39;$&#39;,&#39;$&#39;]]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="气体动理论">
+<meta property="og:url" content="http://what14new.github.io/posts/e624.html">
+<meta property="og:site_name" content="小花生">
+<meta property="og:description" content="课本气体动理论关键知识点。                     MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[&#39;$&#39;,&#39;$&#39;]]">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-30T07:44:05.000Z">
+<meta property="article:modified_time" content="2024-05-15T15:21:30.830Z">
+<meta property="article:author" content="花生了什么树">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://what14new.github.io/posts/e624.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>气体动理论 | 小花生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小花生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">study & life record.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>计划</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://what14new.github.io/posts/e624.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="花生了什么树">
+      <meta itemprop="description" content="星海横流，岁月成碑。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小花生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          气体动理论
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-04-30 15:44:05" itemprop="dateCreated datePublished" datetime="2024-04-30T15:44:05+08:00">2024-04-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%89%A9%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">物理</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%89%A9%E7%90%86/%E7%90%86%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">理论</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>课本气体动理论关键知识点。</p>
+</blockquote>
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            }
+        });
+    </script>
+</head>
+<span id="more"></span>
+
+<h2 id="理想气体物态方程"><a href="#理想气体物态方程" class="headerlink" title="理想气体物态方程"></a>理想气体物态方程</h2><h3 id="key-1"><a href="#key-1" class="headerlink" title="key 1"></a>key 1</h3><p>$$<br>pV&#x3D;\nu RT<br>$$</p>
+<p>式中，$\nu&#x3D;m&#x2F;M$ 为气体的<strong>物质的量</strong>，</p>
+<p>$M$ 为气体的<strong>摩尔质量</strong>，$M&#x3D;$ 相对分子质量 $\times10^{-3}kg$，</p>
+<p>$R&#x3D;8.31J&#x2F;(mol·K)$ 为<strong>摩尔气体质量</strong>。</p>
+<h3 id="key-2"><a href="#key-2" class="headerlink" title="key 2"></a>key 2</h3><p>根据<strong>阿伏伽德罗常量</strong>$N&#x3D;6.022\times10^{23}mol^{-1}$，</p>
+<p>引入<strong>玻尔兹曼常量</strong>$k&#x3D;\frac R{N_A}&#x3D;1.38\times10^{-23}J&#x2F;K$，</p>
+<p>于是将理想气体物态方程改写为：<br>$$<br>p&#x3D;nkT<br>$$<br>式中$n&#x3D;\frac NV$ 是单位体积内的分子数，即<strong>分子数密度</strong>。</p>
+<h3 id="key-3"><a href="#key-3" class="headerlink" title="key 3"></a>key 3</h3><p>对于混合理想气体，由<strong>道尔顿分压定律</strong>指出：混合理想气体的压强等于各组分的分压强之和。即$p&#x3D;\sum\limits_i p_i$</p>
+<p>对每一组分都有$p_iV_i&#x3D;\frac {m_i}{M_i}RT$</p>
+<p>于是混合理想气体的方程可以写成与单一成分理想气体方程相同的形式：<br>$$<br>pV&#x3D;\frac mMRT<br>$$<br>其中$M$为<strong>平均摩尔质量</strong><br>$$<br>\frac 1M&#x3D;\sum\limits_i \frac{m_i}{m}\frac 1{M_i}<br>$$</p>
+<h2 id="理想气体微观模型"><a href="#理想气体微观模型" class="headerlink" title="理想气体微观模型"></a>理想气体微观模型</h2><p>作以下力学假设：</p>
+<ul>
+<li>分子的大小可忽略不计</li>
+<li>气体分子与分子之间及气体分子与容器壁之间除碰撞外无相互作用</li>
+<li>除特别考虑外，一般不计分子重力</li>
+<li>分子间及分子与器壁间的碰撞为弹性碰撞，遵守动量守恒定律和动能守恒定律</li>
+</ul>
+<p>定义理想气体分子的<strong>平均平动动能</strong><br>$$<br>\bar{\varepsilon_t}&#x3D;\frac12m_f\bar{v^2}<br>$$<br>则气体压强可以写成<br>$$<br>p&#x3D;\frac23n\bar{\varepsilon_t}<br>$$<br>再与理想气体物态方程$p&#x3D;nkT$ 作比较，于是<br>$$<br>\bar{\varepsilon_t}&#x3D;\frac{3kT}2<br>$$<br>说明了理想气体<strong>温度</strong>的高低直接反映了<strong>分子平均平动动能</strong>的大小。</p>
+<h2 id="能量均分定理"><a href="#能量均分定理" class="headerlink" title="能量均分定理"></a>能量均分定理</h2><ul>
+<li>平动自由度t，转动自由度r，振动自由度s</li>
+</ul>
+<p>定义<strong>气体内能</strong>：气体的内能是指它所包含的<strong>所有分子的能量</strong>和<strong>分子之间的相互作用的势能</strong>的总和。</p>
+<p>对理想气体，其气体内能：<br>$$<br>E&#x3D;N\bar{\varepsilon}&#x3D;\frac N2(t+r+2s)kT<br>$$<br>或写作<br>$$<br>E&#x3D;\frac \nu2(t+r+2s)RT<br>$$<br>因此1 mol 气体的内能为<br>$$<br>E_m&#x3D;\frac 12(t+r+2s)RT<br>$$<br>有此结论：对于理想气体，其内能是一个只与气体分子数$(\nu)$和温度$(T)$有关的量。</p>
+<h2 id="麦克斯韦速率分布"><a href="#麦克斯韦速率分布" class="headerlink" title="麦克斯韦速率分布"></a>麦克斯韦速率分布</h2><p>麦克斯韦速率分布函数：<br>$$<br>f(v)&#x3D;4\pi^2\left(\frac{m_f}{2\pi kT}\right)^{3&#x2F;2}e^{-m_fv^2&#x2F;2kT}<br>$$<br>分布函数的<strong>归一化条件</strong>：<br>$$<br>\int_N\frac{\mathrm dN_v}{N}&#x3D;\int_0^\infty f(v)\mathrm d v&#x3D;1<br>$$<br>三个特征速率（从小到大）：</p>
+<ul>
+<li><p>最概然速率<br>$$<br>v_p&#x3D;\sqrt{\frac{2RT}M}<br>$$</p>
+</li>
+<li><p>平均速率<br>$$<br>\bar v&#x3D;\sqrt{\frac{8RT}{\pi M}}<br>$$</p>
+</li>
+<li><p>方均根速率<br>$$<br>\sqrt{\bar{v^2}}&#x3D;\sqrt{\frac{3RT}{M}}<br>$$</p>
+</li>
+</ul>
+<h2 id="分子的平均碰撞频率，平均自由程"><a href="#分子的平均碰撞频率，平均自由程" class="headerlink" title="分子的平均碰撞频率，平均自由程"></a>分子的平均碰撞频率，平均自由程</h2><p>平均自由 $\bar\lambda$ 与平均碰撞频率 $\bar Z$ 的关系为：<br>$$<br>\bar\lambda &#x3D; \frac{\bar v}{\bar Z}<br>$$<br> 进一步，有：<br>$$<br>\bar Z &#x3D; \sqrt 2n\pi d^2\bar v<br>$$</p>
+<p>$$<br>\bar\lambda &#x3D; \frac 1{\sqrt 2 n\pi d^2}&#x3D;\frac{kT}{\sqrt2 \pi d^2p}<br>$$</p>
+<h2 id="输运现象"><a href="#输运现象" class="headerlink" title="输运现象"></a>输运现象</h2><p>当系统各部分的宏观物理性质如流速、温度或密度不均匀时，由于分子的热运动，系统将逐渐过渡到平衡态，这种过渡称为<strong>输运过程</strong>，常见的输运过程有如下三种：</p>
+<h3 id="粘性现象（动量的输运）"><a href="#粘性现象（动量的输运）" class="headerlink" title="粘性现象（动量的输运）"></a>粘性现象（动量的输运）</h3><p>$$<br>\mathrm d F&#x3D;-\eta\left(\frac{\mathrm du}{\mathrm d y}\right)\mathrm S<br>$$</p>
+<p>其中<strong>黏度</strong>$\eta$：<br>$$<br>\eta &#x3D; \frac13 nm_f\bar v\bar \lambda<br>$$</p>
+<h3 id="热传导（能量的输运）"><a href="#热传导（能量的输运）" class="headerlink" title="热传导（能量的输运）"></a>热传导（能量的输运）</h3><p>$$<br>\mathrm dQ&#x3D;-\kappa\frac{\mathrm dT}{\mathrm dy}\mathrm dS\mathrm dt<br>$$</p>
+<p>其中<strong>热导率</strong>$\kappa$：<br>$$<br>\kappa &#x3D; \frac13 nm_f\bar v\bar\lambda\frac{C_{V,m}}{M}<br>$$</p>
+<h3 id="扩散（质量的输运）"><a href="#扩散（质量的输运）" class="headerlink" title="扩散（质量的输运）"></a>扩散（质量的输运）</h3><p>$$<br>\mathrm dm&#x3D;-D\frac{\mathrm d\rho}{\mathrm dy}\mathrm dS\mathrm dt<br>$$</p>
+<p>其中<strong>扩散系数</strong>$D$：<br>$$<br>D&#x3D;\frac13\bar v\bar \lambda<br>$$</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/7d2c.html" rel="prev" title="纳什均衡">
+      <i class="fa fa-chevron-left"></i> 纳什均衡
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/5408.html" rel="next" title="to 武功山&长沙">
+      to 武功山&长沙 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93%E7%89%A9%E6%80%81%E6%96%B9%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">理想气体物态方程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#key-1"><span class="nav-number">1.1.</span> <span class="nav-text">key 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key-2"><span class="nav-number">1.2.</span> <span class="nav-text">key 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key-3"><span class="nav-number">1.3.</span> <span class="nav-text">key 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93%E5%BE%AE%E8%A7%82%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">理想气体微观模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%BD%E9%87%8F%E5%9D%87%E5%88%86%E5%AE%9A%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">能量均分定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BA%A6%E5%85%8B%E6%96%AF%E9%9F%A6%E9%80%9F%E7%8E%87%E5%88%86%E5%B8%83"><span class="nav-number">4.</span> <span class="nav-text">麦克斯韦速率分布</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%AD%90%E7%9A%84%E5%B9%B3%E5%9D%87%E7%A2%B0%E6%92%9E%E9%A2%91%E7%8E%87%EF%BC%8C%E5%B9%B3%E5%9D%87%E8%87%AA%E7%94%B1%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">分子的平均碰撞频率，平均自由程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E8%BF%90%E7%8E%B0%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">输运现象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%98%E6%80%A7%E7%8E%B0%E8%B1%A1%EF%BC%88%E5%8A%A8%E9%87%8F%E7%9A%84%E8%BE%93%E8%BF%90%EF%BC%89"><span class="nav-number">6.1.</span> <span class="nav-text">粘性现象（动量的输运）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E4%BC%A0%E5%AF%BC%EF%BC%88%E8%83%BD%E9%87%8F%E7%9A%84%E8%BE%93%E8%BF%90%EF%BC%89"><span class="nav-number">6.2.</span> <span class="nav-text">热传导（能量的输运）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%A9%E6%95%A3%EF%BC%88%E8%B4%A8%E9%87%8F%E7%9A%84%E8%BE%93%E8%BF%90%EF%BC%89"><span class="nav-number">6.3.</span> <span class="nav-text">扩散（质量的输运）</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="花生了什么树"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">花生了什么树</p>
+  <div class="site-description" itemprop="description">星海横流，岁月成碑。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">40</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花生了什么树</span>
+</div>
+
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+--!>
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/16/2024 20:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()",250);
+</script>
+
+<!-- 访客量的设置 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span><br></span> 
+
+<span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+</span>
+<span>总访客&nbsp<span id="busuanzi_value_site_uv"></span>&nbsp人</span>
+    <span class="post-meta-divider">|</span>
+<span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+</span>
+    <span>总访问量&nbsp<span id="busuanzi_value_site_pv"></span>&nbsp次</span>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
