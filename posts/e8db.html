@@ -20,19 +20,23 @@
     var CONFIG = {"hostname":"what14new.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[&#39;$&#39;,&#39;$&#39;]]             }         });">
+  <meta name="description" content="研究形如 f(x+y)&#x3D;f(x)+f(y) 的方程的性质。                     MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[">
 <meta property="og:type" content="article">
-<meta property="og:title" content="流体力学">
-<meta property="og:url" content="http://what14new.github.io/posts/e644.html">
+<meta property="og:title" content="加性柯西方程">
+<meta property="og:url" content="http://what14new.github.io/posts/e8db.html">
 <meta property="og:site_name" content="小花生">
-<meta property="og:description" content="MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[&#39;$&#39;,&#39;$&#39;]]             }         });">
+<meta property="og:description" content="研究形如 f(x+y)&#x3D;f(x)+f(y) 的方程的性质。                     MathJax.Hub.Config({             tex2jax: {             skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;],             inlineMath: [[">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-18T01:00:58.000Z">
-<meta property="article:modified_time" content="2024-07-16T01:55:00.340Z">
+<meta property="og:image" content="http://what14new.github.io/posts/e8db/0.png">
+<meta property="og:image" content="http://what14new.github.io/posts/e8db/1.png">
+<meta property="og:image" content="http://what14new.github.io/posts/e8db/2.png">
+<meta property="article:published_time" content="2024-08-07T06:32:27.000Z">
+<meta property="article:modified_time" content="2024-08-07T07:37:30.407Z">
 <meta property="article:author" content="花生了什么树">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://what14new.github.io/posts/e8db/0.png">
 
-<link rel="canonical" href="http://what14new.github.io/posts/e644.html">
+<link rel="canonical" href="http://what14new.github.io/posts/e8db.html">
 
 
 <script id="page-configurations">
@@ -45,7 +49,7 @@
   };
 </script>
 
-  <title>流体力学 | 小花生</title>
+  <title>加性柯西方程 | 小花生</title>
   
 
 
@@ -171,7 +175,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://what14new.github.io/posts/e644.html">
+    <link itemprop="mainEntityOfPage" href="http://what14new.github.io/posts/e8db.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -184,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          流体力学
+          加性柯西方程
         </h1>
 
         <div class="post-meta">
@@ -194,7 +198,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2024-04-18 09:00:58" itemprop="dateCreated datePublished" datetime="2024-04-18T09:00:58+08:00">2024-04-18</time>
+              <time title="创建时间：2024-08-07 14:32:27" itemprop="dateCreated datePublished" datetime="2024-08-07T14:32:27+08:00">2024-08-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -202,11 +206,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%89%A9%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">物理</span></a>
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%89%A9%E7%90%86/%E7%90%86%E8%AE%BA/" itemprop="url" rel="index"><span itemprop="name">理论</span></a>
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86/" itemprop="url" rel="index"><span itemprop="name">微积分</span></a>
                 </span>
             </span>
 
@@ -221,7 +225,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <head>
+        <blockquote>
+<p>研究形如 f(x+y)&#x3D;f(x)+f(y) 的方程的性质。</p>
+</blockquote>
+<head>
     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
@@ -232,54 +239,27 @@
         });
     </script>
 </head>
-
-
-<blockquote>
-<p>课本流体力学关键知识点。</p>
-</blockquote>
 <span id="more"></span>
 
-<h2 id="连续性方程"><a href="#连续性方程" class="headerlink" title="连续性方程"></a>连续性方程</h2><p>$$<br>S_1v_1&#x3D;S_2v_2<br>$$</p>
-<p>表明<strong>不可压缩</strong>的流体在<strong>同一流管</strong>中作<strong>定常流动</strong>时，流管的横截面积与该处平均流速的乘积为常量。<br>$$<br>S_0v_0&#x3D;S_1v_1 + S_2v_2 + \dots + S_nv_n<br>$$<br>这是在<strong>分支流管</strong>中连续性方程的形式。</p>
-<h2 id="伯努利方程"><a href="#伯努利方程" class="headerlink" title="伯努利方程"></a>伯努利方程</h2><p>$$<br>p + \rho gh + \frac12\rho v^2 &#x3D; const<br>$$</p>
-<p>表明<strong>理想流体</strong>作<strong>定常流动</strong>时，<strong>同一流管</strong>的不同截面处的<strong>压强</strong>、<strong>流体单位体积的势能</strong>与<strong>单位体积动能</strong>之和都是相等的。</p>
-<p>应用：</p>
+<p>柯西方程是形如 <strong>f(x+y)&#x3D;f(x)+f(y)</strong> 等的一类函数方程，由柯西最早做出相关研究，此方程称为“加性柯西方程”，它的解是 <strong>正比例函数</strong>。</p>
 <ul>
-<li><p>空吸作用</p>
+<li><p>在<strong>有理数域</strong>上，可以利用<strong>初等代数</strong>得到其<strong>正比例函数</strong>的解。</p>
 </li>
-<li><p>小孔流速</p>
-<p>托里拆利 $Torricelli$ 公式：$v &#x3D; \sqrt{2gh}$</p>
-</li>
-<li><p>流速管</p>
-</li>
-<li><p>流量计</p>
-</li>
+<li><p>在<strong>实数域</strong>上，需要<strong>更多的条件</strong>使它的解为<strong>正比例函数</strong>。</p>
+<img src="/posts/e8db/0.png" class=""></li>
 </ul>
-<h2 id="牛顿黏性定律"><a href="#牛顿黏性定律" class="headerlink" title="牛顿黏性定律"></a>牛顿黏性定律</h2><p>$$<br>F&#x3D;\eta\frac{\mathrm dv}{\mathrm dx}S<br>$$</p>
-<p>表明黏性力$F$的大小与其<strong>分布的面积$S$<strong>成正比，与该处</strong>速度梯度</strong>成正比。</p>
-<p>比例系数 $\eta$ 称为<strong>黏度</strong>或<strong>黏性系数</strong> 单位：$Pa·s$</p>
-<h2 id="层流、湍流、雷诺数"><a href="#层流、湍流、雷诺数" class="headerlink" title="层流、湍流、雷诺数"></a>层流、湍流、雷诺数</h2><p>$$<br>Re &#x3D; \frac{\rho v d}{\eta}<br>$$</p>
-<ul>
-<li>$Re &lt; 2000$ 作<strong>层流</strong> 。</li>
-<li>$2000&lt;Re&lt;3000$ 可作层流也可做湍流，称为<strong>过渡流</strong> 。</li>
-<li>$Re&gt;3000$ 作<strong>湍流</strong>。</li>
+<h2 id="在有理数中的证明"><a href="#在有理数中的证明" class="headerlink" title="在有理数中的证明"></a>在有理数中的证明</h2><img src="/posts/e8db/1.png" class="">
+
+<h2 id="在实数域上的证明"><a href="#在实数域上的证明" class="headerlink" title="在实数域上的证明"></a>在实数域上的证明</h2><ul>
+<li>补充条件：f(x) 在实数域上连续</li>
 </ul>
-<p>雷诺数量纲为1， 是判别黏性流体运动状态的<strong>唯一参量</strong>。</p>
-<p>可见：液体的<strong>密度</strong>、<strong>流速</strong>，管道<strong>直径</strong>越大，液体<strong>黏度</strong>越小，越容易发生<strong>湍流</strong>。</p>
-<p>相应的，液体的<strong>密度</strong>、<strong>流速</strong>，管道<strong>直径</strong>越小，液体<strong>黏度</strong>越大，越容易发生<strong>层流</strong>。</p>
-<h2 id="黏性流体的伯努利方程"><a href="#黏性流体的伯努利方程" class="headerlink" title="黏性流体的伯努利方程"></a>黏性流体的伯努利方程</h2><p>$$<br>p_1 + \rho gh_1 + \frac12\rho v^2_1 &#x3D; p_2 + \rho gh_2 + \frac12\rho v^2_2 + w<br>$$</p>
-<p>式中 $w$ 表示<strong>单位体积</strong>的<strong>不可压缩</strong>的<strong>黏性流体</strong>克服<strong>黏性阻力</strong>所做的功（或损失的能量）。</p>
-<h2 id="泊肃叶定律"><a href="#泊肃叶定律" class="headerlink" title="泊肃叶定律"></a>泊肃叶定律</h2><p>$$<br>q_v &#x3D; \frac{\pi R^4}{8\eta L}(p_1-p_2)<br>$$</p>
-<p>将泊肃叶定律改写成以下形式：<br>$$<br>q_v &#x3D; \frac{\Delta p}{R_f}<br>$$<br>其中 $\Delta p$ 为压强差，$R_f &#x3D; \frac{8\eta L}{\pi R^4}$ 称为<strong>流阻</strong></p>
-<p>可见：牛顿黏性流体在均匀水平流管中流动时，流量与<strong>管两端的压强差</strong>成<strong>正</strong>比，与其<strong>流阻</strong>成反比。</p>
-<p>若流体连续通过n个流阻不同的管子：</p>
-<ul>
-<li><p>串联：<br>$$<br>R_f&#x3D;R_{f1}+R_{f2}+\dots + R_{fn}<br>$$</p>
-</li>
-<li><p>并联<br>$$<br>\frac1{R_f}&#x3D;\frac1{R_{f1}}+\frac1{R_{f2}}+\dots +\frac1{R_{fn}}<br>$$</p>
-</li>
-</ul>
-<h2 id="斯托克斯定律"><a href="#斯托克斯定律" class="headerlink" title="斯托克斯定律"></a>斯托克斯定律</h2><p>对于$Re&lt;1$，运动速度不大的球形物体，黏性阻力可如下表示：<br>$$<br>F_f&#x3D;6\pi \eta rv<br>$$<br>若小球密度为$\rho$，流体密度为$\rho’$，则达到终极速度（沉降速度）时：<br>$$<br>\frac43\pi r^3\rho g &#x3D; \frac 43\pi r^3 \rho’ g + 6\pi\eta rv_t<br>$$<br>即沉降速度为：<br>$$<br>v_t &#x3D; \frac29\frac{gr^2}{\eta}(\rho - \rho’)<br>$$</p>
+<p>由于函数连续，且有理数稠密，不难说明 f(x) &#x3D; xf(1) 在 x 为任意实数上成立（利用有理数逼近）。</p>
+<img src="/posts/e8db/2.png" class="">
+
+<h2 id="其他方程向柯西方程的转化"><a href="#其他方程向柯西方程的转化" class="headerlink" title="其他方程向柯西方程的转化"></a>其他方程向柯西方程的转化</h2><p>在一定条件下，可以做如下转化。</p>
+<p>$f(xy)&#x3D;f(x)f(y)$ -&gt; $g(x) &#x3D;\ln(f(e^x))$ 为加性函数</p>
+<p>$f(x+y)&#x3D;f(x)f(y)$ -&gt; $g(x)&#x3D;\ln f(x)$ 为加性函数</p>
+<p> $f(xy)&#x3D;f(x)+f(y)$ -&gt; $g(x)&#x3D;f(e^x)$ 为加性函数</p>
 
     </div>
 
@@ -295,13 +275,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/b001.html" rel="prev" title="Linux-MySQL初初步">
-      <i class="fa fa-chevron-left"></i> Linux-MySQL初初步
+    <a href="/posts/9ac7.html" rel="prev" title="Java 语法">
+      <i class="fa fa-chevron-left"></i> Java 语法
     </a></div>
-      <div class="post-nav-item">
-    <a href="/posts/b605.html" rel="next" title="狭义相对论">
-      狭义相对论 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -360,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E6%80%A7%E6%96%B9%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">连续性方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%AF%E5%8A%AA%E5%88%A9%E6%96%B9%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">伯努利方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%9B%E9%A1%BF%E9%BB%8F%E6%80%A7%E5%AE%9A%E5%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">牛顿黏性定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%82%E6%B5%81%E3%80%81%E6%B9%8D%E6%B5%81%E3%80%81%E9%9B%B7%E8%AF%BA%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">层流、湍流、雷诺数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%BB%8F%E6%80%A7%E6%B5%81%E4%BD%93%E7%9A%84%E4%BC%AF%E5%8A%AA%E5%88%A9%E6%96%B9%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">黏性流体的伯努利方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%8A%E8%82%83%E5%8F%B6%E5%AE%9A%E5%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">泊肃叶定律</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%AF%E6%89%98%E5%85%8B%E6%96%AF%E5%AE%9A%E5%BE%8B"><span class="nav-number">7.</span> <span class="nav-text">斯托克斯定律</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E6%9C%89%E7%90%86%E6%95%B0%E4%B8%AD%E7%9A%84%E8%AF%81%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">在有理数中的证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E5%AE%9E%E6%95%B0%E5%9F%9F%E4%B8%8A%E7%9A%84%E8%AF%81%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">在实数域上的证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%96%B9%E7%A8%8B%E5%90%91%E6%9F%AF%E8%A5%BF%E6%96%B9%E7%A8%8B%E7%9A%84%E8%BD%AC%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">其他方程向柯西方程的转化</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
